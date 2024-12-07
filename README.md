@@ -4,7 +4,7 @@ This project analyzes the sentiment and emotions of tweets using machine learnin
 
 ---
 
-## 🚀 **Features**
+## **Features**
 
 1. **Analyze Typed Tweets**:
     
@@ -21,7 +21,7 @@ This project analyzes the sentiment and emotions of tweets using machine learnin
 
 ---
 
-## 🛠️ **Technologies Used**
+## **Technologies Used**
 
 - **Backend**: Django (Python)
 - **Data Processing**: Pandas
@@ -31,7 +31,7 @@ This project analyzes the sentiment and emotions of tweets using machine learnin
 
 ---
 
-## 📂 **Project Structure**
+##  **Project Structure**
 
 ```
 Tweet-Sentiment-Emotion-Analysis/
@@ -117,34 +117,15 @@ pip install -r requirements.txt
 
 ```
 
-### 4. Add Twitter API Credentials
 
-Ensure you have a `tweepy_sentiment.py` file with the following structure:
-
-```python
-import tweepy
-
-def Import_tweet_sentiment(handle):
-    auth = tweepy.OAuthHandler('API_KEY', 'API_SECRET_KEY')
-    auth.set_access_token('ACCESS_TOKEN', 'ACCESS_TOKEN_SECRET')
-    api = tweepy.API(auth)
-
-    # Fetch tweets for the handle or hashtag
-    tweets = api.user_timeline(screen_name=handle, count=10)
-    return {'list_of_tweets': [tweet.text for tweet in tweets]}
-
-```
-
-Replace `'API_KEY'`, `'API_SECRET_KEY'`, `'ACCESS_TOKEN'`, and `'ACCESS_TOKEN_SECRET'` with your actual Twitter Developer credentials.
-
-### 5. Run Migrations
+### 4. Run Migrations
 
 ```bash
 python manage.py migrate
 
 ```
 
-### 6. Run the Development Server
+### 5. Run the Development Server
 
 ```bash
 python manage.py runserver
