@@ -25,7 +25,6 @@ This project analyzes the sentiment and emotions of tweets using machine learnin
 
 - **Backend**: Django (Python)
 - **Data Processing**: Pandas
-- **Twitter API Integration**: Tweepy
 - **Frontend**: HTML, CSS (Django Templates)
 - **Machine Learning**: Custom sentiment analysis code
 
