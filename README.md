@@ -1,27 +1,24 @@
-
 # Tweet-Sentiment-Emotion-Analysis
 
-This project analyzes the sentiment and emotions of tweets using Natural Language Processing (NLP) techniques. Users can input tweets manually or fetch tweets from a dataset based on hashtags or keywords, and the system will classify the sentiment as Positive, Negative, or Neutral.
+This project analyzes the sentiment (Positive, Negative, Neutral) and emotions (Love, Happiness, Sadness, Worry) of tweets. You can either enter a tweet manually or fetch tweets from a dataset based on hashtags or keywords. The system will then classify the sentiment and detect emotions.
 
 ## Technologies Used
 
-- **Python**
-- **Django** (Web framework)
-- **TextBlob** (Sentiment analysis)
-- **NLTK** (Text processing)
-- **Pandas** (Data manipulation)
-
+- **Python**: The programming language used to build the project.
+- **Django**: Web framework for creating the website.
+- **TextBlob**: Used for sentiment analysis.
+- **NLTK**: Used for processing text (like lemmatizing words).
+- **Pandas**: Used for handling and working with the tweet dataset.
+- **HTML & CSS**: For building and styling the web pages.
+- **CSV**: A dataset file containing tweets and their sentiments/emotions, used to fetch tweets based on hashtags or keywords.
 
 ## Features
 
 - **Sentiment Analysis**: Classifies tweets as Positive, Negative, or Neutral.
-- **Emotion Detection**: Detects emotions like happiness, sadness, etc.
-- **Dataset-Based Tweet Fetching**: Fetch tweets from a pre-existing dataset by hashtag or keyword.
+- **Emotion Detection**: Detects emotions like Love, Happiness, Sadness, or Worry.
+- **Dataset-Based Tweet Fetching**: Fetch tweets from a CSV dataset based on a hashtag or keyword.
 
-## Usage
+## How to Use
 
-1. **Sentiment Analysis (Typed Tweet)**:
-   - Enter a tweet to analyze its sentiment.
-
-2. **Sentiment Analysis (Imported Tweet)**:
-   - Enter a hashtag or search term to fetch related tweets from a dataset and analyze them.
+1. **Sentiment Analysis (Typed Tweet)**: Type a tweet to analyze its sentiment.
+2. **Sentiment Analysis (Imported Tweet)**: Enter a hashtag or search term to fetch related tweets from the dataset (CSV file) and analyze them.
