@@ -2,8 +2,6 @@
 
 A powerful web application that analyzes tweets for sentiment and emotions, helping users understand the emotional context of social media content.
 
-![Tweet Analysis Demo](screenshots/demo.png)
-
 ## Overview
 
 This project provides real-time sentiment and emotion analysis for tweets. It can analyze any text input for sentiment (Positive, Negative, Neutral) and detect emotions (Love, Happiness, Sadness, Worry). The application also includes a dataset-based tweet search feature.
@@ -86,17 +84,6 @@ This project provides real-time sentiment and emotion analysis for tweets. It ca
 7. **Access the application**
    Open your browser and navigate to `http://127.0.0.1:8000`
 
-## Screenshots
-
-### Home Page
-![Home Page](screenshots/home.png)
-
-### Analysis Results
-![Analysis Results](screenshots/analysis.png)
-
-### Search Results
-![Search Results](screenshots/search.png)
-
 ## Project Structure
 
 ```
@@ -125,9 +112,6 @@ tweet-sentiment-analysis/
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
