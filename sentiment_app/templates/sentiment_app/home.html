@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tweet Sentiment & Emotion Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-center text-blue-600 mb-8">Tweet Sentiment & Emotion Analysis</h1>
+        
+        <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Analyze a Tweet</h2>
+            <form id="tweet-form" class="space-y-4">
+                {% csrf_token %}
+                <div>
+                    <textarea id="tweet-text" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" rows="4" placeholder="Enter your tweet here..."></textarea>
+                </div>
+                <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-200">Analyze</button>
+            </form>
+            
+            <div id="analysis-result" class="mt-6 hidden">
+                <h3 class="text-xl font-semibold mb-3">Analysis Results</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <p class="text-gray-600">Sentiment:</p>
+                        <p id="sentiment-result" class="text-lg font-semibold"></p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <p class="text-gray-600">Emotion:</p>
+                        <p id="emotion-result" class="text-lg font-semibold"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-semibold mb-4">Search Tweets</h2>
+            <form id="search-form" class="space-y-4">
+                {% csrf_token %}
+                <div>
+                    <input type="text" id="search-query" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Enter hashtag or keyword...">
+                </div>
+                <button type="submit" class="w-full bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition duration-200">Search</button>
+            </form>
+            
+            <div id="search-results" class="mt-6 hidden">
+                <h3 class="text-xl font-semibold mb-3">Search Results</h3>
+                <div id="tweets-list" class="space-y-3"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+            const csrftoken = getCookie('csrftoken');
+
+            $('#tweet-form').on('submit', function(e) {
+                e.preventDefault();
+                const tweetText = $('#tweet-text').val();
+                
+                $.ajax({
+                    url: '/analyze/',
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': csrftoken,
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    data: {
+                        tweet_text: tweetText
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            $('#sentiment-result').text(response.sentiment);
+                            $('#emotion-result').text(response.emotion);
+                            $('#analysis-result').removeClass('hidden');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error:', error);
+                        alert('An error occurred while analyzing the tweet. Please try again.');
+                    }
+                });
+            });
+
+            $('#search-form').on('submit', function(e) {
+                e.preventDefault();
+                const query = $('#search-query').val();
+                
+                $.ajax({
+                    url: '/search/',
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': csrftoken,
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    data: {
+                        query: query
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            const tweetsList = $('#tweets-list');
+                            tweetsList.empty();
+                            
+                            if (response.tweets.length === 0) {
+                                tweetsList.append(`
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <p class="text-gray-800">No tweets found matching your search.</p>
+                                    </div>
+                                `);
+                            } else {
+                                response.tweets.forEach(function(tweet) {
+                                    tweetsList.append(`
+                                        <div class="bg-gray-50 p-4 rounded-lg">
+                                            <p class="text-gray-800">${tweet}</p>
+                                        </div>
+                                    `);
+                                });
+                            }
+                            
+                            $('#search-results').removeClass('hidden');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error:', error);
+                        alert('An error occurred while searching tweets. Please try again.');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
