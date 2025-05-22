@@ -47,42 +47,13 @@ This project provides real-time sentiment and emotion analysis for tweets. It ca
    - Clean and intuitive interface
    - Real-time updates with AJAX
 
-## How to Run
+## 🚀 Getting Started
 
-1. **Clone the repository**
+ **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/tweet-sentiment-analysis.git
+   git clone https://github.com/deepakgoudasirsi/tweet-sentiment-analysis.git
    cd tweet-sentiment-analysis
    ```
-
-2. **Create and activate virtual environment**
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-3. **Install dependencies**
-   ```bash
-   pip install django textblob nltk pandas
-   ```
-
-4. **Download NLTK data**
-   ```bash
-   python3 -c "import nltk; nltk.download('punkt'); nltk.download('averaged_perceptron_tagger')"
-   ```
-
-5. **Apply database migrations**
-   ```bash
-   python3 manage.py migrate
-   ```
-
-6. **Run the development server**
-   ```bash
-   python3 manage.py runserver
-   ```
-
-7. **Access the application**
-   Open your browser and navigate to `http://127.0.0.1:8000`
 
 ## Project Structure
 
@@ -104,18 +75,10 @@ tweet-sentiment-analysis/
 └── README.md
 ```
 
-## Contributing
+---
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+## Contact
 
-
-## Acknowledgments
-
-- TextBlob for sentiment analysis
-- NLTK for natural language processing
-- Django for the web framework
-- Tailwind CSS for the UI components
+* **Deepak Gouda**
+  [GitHub @deepakgoudasirsi](https://github.com/deepakgoudasirsi)
+  [LinkedIn: Deepak Gouda](https://linkedin.com/in/deepakgoudasirsi)
